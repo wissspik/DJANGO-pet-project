@@ -5,12 +5,36 @@
 </head>
 <body>
     <h1>Регистрация</h1>
+<<<<<<< HEAD
+=======
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li style="color:
+                {% if message.tags == 'error_password' %}
+                    red;
+                {% elif message.tags == 'error_users' %}
+                    red;
+                {% elif message.tags == 'success' %}
+                    green;
+                {% else %}
+                    black;
+                {% endif %}">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+>>>>>>> ec4bec4 (/)
     <form method="post" action="{% url 'registration_1' %}">
         {% csrf_token %}
         <label for="name">Логин:</label>
         <input type="text" id="name" name="name" required>
         <br>
         <label for="password">Пароль:</label>
+<<<<<<< HEAD
         <input type="text" id="password" name="password" required>
         <br>
         <label for="password">2 times password:</label>
@@ -20,3 +44,15 @@
     </form>
 </body>
 </html>
+=======
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="password_2">Повторите пароль:</label>
+        <input type="password" id="password_2" name="password_2" required>
+        <br>
+        <button type="submit">Регистрация</button>
+    </form>
+
+</body>
+</html>
+>>>>>>> ec4bec4 (/)
