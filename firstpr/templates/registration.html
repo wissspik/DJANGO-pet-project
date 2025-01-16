@@ -9,9 +9,9 @@
     <ul>
         {% for message in messages %}
             <li style="color:
-                {% if message.tags == 'error_password' %}
+                {% if message.tags == 'error_users' %}
                     red;
-                {% elif message.tags == 'error_users' %}
+                {% elif message.tags == 'error_password' %}
                     red;
                 {% elif message.tags == 'success' %}
                     green;
