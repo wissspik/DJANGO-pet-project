@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .panel {
+            width: 1200px;
+            height: 900px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .panel-header {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .input-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .panel .input-field {
+            width: 100%;
+            height: 60px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        .panel textarea.input-field {
+            height: 60px; /* Установлена одинаковая высота для textarea */
+            border-radius: 5px;
+        }
+        .panel button {
+            align-self: center;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .panel button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <div class="panel-header">Напишите свою статью</div>
+        <form method="POST" action="/focus/articles/">
+            {% csrf_token %}
+            <div class="input-container">
+                <input type="text" name="article_title" class="input-field" placeholder="Введите название вашей статьи..." required>
+                <input type="text" name="article_subtitle" class="input-field" placeholder="Введите подзаголовок статьи..." required>
+                <textarea name="article_text" class="input-field" placeholder="Введите текст вашей статьи..."></textarea>
+            </div>
+            <button type="submit">Сохранить</button>
+        </form>
+    </div>
+</body>
+</html>

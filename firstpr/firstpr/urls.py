@@ -17,10 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from start import views
+from focus import views as focus_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls,name = admin),
+    path('focus/articles/<str:url>/',focus_views.urls_view,name = 'articles_url'),
+    path('admin/', admin.site.urls, name='admin'),  # Исправлено имя для admin
     path('', views.entrance_view, name='home'),
-    path('regis/',views.registration_view,name = 'registration_1'),
-    path('focus/',views.focus_view,name = 'focus_p')
+    path('regis/', views.registration_view, name='registration_1'),
+    path('focus/', views.focus_view, name='focus_p'),
+    path('focus/articles/', focus_views.articles_view, name='articles')
 ]

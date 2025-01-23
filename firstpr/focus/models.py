@@ -1,8 +1,11 @@
 from django.db import models
+from start.models import Person
 
-class Baners(models.Model):
-    user = models.ForeignKey('start.Person', on_delete=models.CASCADE)
-    name = models.CharField(max_length = 78)
-    day = models.DateField()
-    time = models.DateTimeField()
-    color = models.CharField(max_length  = 7)
+class URL(models.Model):
+    user = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='posts')  # Связаю по
+    url = models.CharField(max_length = 71)
+    url_Text = models.CharField(max_length=300,null = True,blank = True)
+    url_title = models.CharField(max_length = 100,null = True,blank = True)
+    url_subtitle = models.CharField(max_length = 100,null = True,blank = True)
+
+

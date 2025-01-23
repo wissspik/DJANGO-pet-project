@@ -1,24 +1,27 @@
-from .models import Baners
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from .models import URL
+import uuid
 
-def focus_view(request):
-    if method.request == 'POST':
-        name = request.POST.get('name')
-        day = request.POST.get('day')
-        time = request.POST.get('time')
-        color = request.POST.get('color')
 
-        user = request.user #получаю логин для баннера
-        Baners.objects.create(user = user,name=name, day = day,time = time,color = color)
+def articles_view(request):
+    if request.method == 'POST':
+        url_post = uuid.uuid4().hex
+        full_url = f'/focus/articles/{url_post}/'
+        Text = request.POST.get('article_text')
+        Title = request.POST.get('article_title')
+        Title_2 = request.POST.get('article_subtitle')
 
-        return redirect('task_view')  # Перенаправляем на страницу с задачами (после добавления)
-    return render(request,'focus.html')
+        # Исправленные имена параметров
+        URL.objects.create(url=full_url, url_Text=Text, url_title=Title, url_subtitle=Title_2)
 
-def task_view(request):
-    # Извлекаем все баннеры для текущего пользователя
-    user = request.user  # или получаем пользователя из сессии
-    banners = Baners.objects.filter(user=user)  # Получаем баннеры по текущему пользователю
+        # Перенаправляем на нужную страницу
+        return redirect('focus_p')
 
-    # Передаем данные в шаблон
-    return render(request, 'your_template.html', {'banners': banners})
+    return render(request, 'articles.html')
+
+
+def urls_view(request, url):
+    link = get_object_or_404(URL, url=f'/focus/articles/{url}/',url_Text =  article_text )
+
+    return render(request, 'urt_art.html', {'url': link.url, 'article_text': article_text})
