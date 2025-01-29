@@ -6,17 +6,25 @@ import uuid
 
 def articles_view(request):
     if request.method == 'POST':
+        if not request.user.is_authenticated:  # Убедитесь, что пользователь вошёл в систему
+            return redirect('login')  # Перенаправьте на страницу логина, если он анонимный
+
         url_post = uuid.uuid4().hex
         full_url = f'/focus/articles/{url_post}/'
         Text = request.POST.get('article_text')
         Title = request.POST.get('article_title')
         Title_2 = request.POST.get('article_subtitle')
 
-        # Исправленные имена параметров
-        URL.objects.create(url=full_url, url_Text=Text, url_title=Title, url_subtitle=Title_2)
+        # Создаём запись с привязкой к текущему пользователю
+        URL.objects.create(
+            user=request.user.person,  # Связь через ForeignKey
+            url=full_url,
+            url_Text=Text,
+            url_title=Title,
+            url_subtitle=Title_2
+        )
 
-        # Перенаправляем на нужную страницу
-        return redirect('focus_p')
+        return redirect('focus_p')  # Перенаправляем после успешной отправки
 
     return render(request, 'articles.html')
 

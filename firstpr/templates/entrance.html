@@ -22,7 +22,7 @@
     <form method="post" action="{% url 'home' %}">
         {% csrf_token %}
         <label for="name">Логин:</label>
-        <input type="password" id="name" name="name" required>
+        <input type="text" id="name" name="name" required>
         <br>
         <label for="password">Пароль:</label>
         <input type="password" id="password" name="password" required>

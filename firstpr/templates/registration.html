@@ -23,19 +23,10 @@
         {% endfor %}
     </ul>
     {% endif %}
-
     <form method="post" action="{% url 'registration_1' %}">
-        {% csrf_token %}
-        <label for="name">Логин:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="password">Пароль:</label>
-        <input type="text" id="password" name="password" required>
-        <br>
-        <label for="password">2 times password:</label>
-        <input type="text" id="password_2" name="password_2" required>
-        <br>
-        <button type="submit">Регистрация</button>
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Это автоматически отрендерит форму, включая все поля и их валидацию -->
+    <button type="submit">Регистрация</button>
     </form>
-</body>
+    <body>
 </html>
