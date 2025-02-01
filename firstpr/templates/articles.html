@@ -16,8 +16,8 @@
             background-color: #f4f4f4;
         }
         .panel {
-            width: 1200px;
-            height: 900px;
+            width: 900px;
+            height: 600px;
             border: 2px solid #ccc;
             border-radius: 5px;
             background-color: #fff;
@@ -38,7 +38,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            justify-content: space-between;
         }
         .panel .input-field {
             width: 100%;
@@ -53,6 +53,20 @@
         .panel textarea.input-field {
             height: 60px; /* Установлена одинаковая высота для textarea */
             border-radius: 5px;
+        }
+        .panel .input-field + .input-field {
+            margin-top: 20px; /* Увеличиваем расстояние между полями ввода */
+        }
+        .radio-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .radio-container input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
         }
         .panel button {
             align-self: center;
@@ -78,6 +92,14 @@
                 <input type="text" name="article_title" class="input-field" placeholder="Введите название вашей статьи..." required>
                 <input type="text" name="article_subtitle" class="input-field" placeholder="Введите подзаголовок статьи..." required>
                 <textarea name="article_text" class="input-field" placeholder="Введите текст вашей статьи..."></textarea>
+
+                <!-- Панель с кнопками Да/Нет -->
+                <div class="radio-container">
+                    <input type="radio" id="yes" name="choice" value="yes">
+                    <label for="yes">Да</label>
+                    <input type="radio" id="no" name="choice" value="no">
+                    <label for="no">Нет</label>
+                </div>
             </div>
             <button type="submit">Сохранить</button>
         </form>
