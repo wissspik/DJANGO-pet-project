@@ -20,7 +20,7 @@ from start import views
 from focus import views as focus_views
 
 urlpatterns = [
-    path('focus/articles/<str:url>/',focus_views.urls_view,name = 'articles_url'),
+    path('focus/articles/<slug:slug>/',focus_views.urls_view,name = 'articles_url'),
     path('admin/', admin.site.urls, name='admin'),  # Исправлено имя для admin
     path('', views.entrance_view, name='home'),
     path('regis/', views.registration_view, name='registration_1'),

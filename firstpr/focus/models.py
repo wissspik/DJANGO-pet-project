@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 
 class Url(models.Model):
     id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='text')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='text') # убрать id
     url = models.CharField(max_length= 71)
 
 class Text(models.Model):
     id = models.AutoField(primary_key=True)
-    url_id = models.ForeignKey(Url,on_delete=models.CASCADE,related_name='urls')
+    url = models.ForeignKey(Url,on_delete=models.CASCADE,related_name='urls')
     anonymity = models.BooleanField()
     text = models.CharField(max_length=3000)
     title = models.CharField(max_length=100)
