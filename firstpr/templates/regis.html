@@ -23,7 +23,7 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <form method="post" action="{% url 'registration_1' %}">
+    <form method="post" action="{% url 'registration' %}">
     {% csrf_token %}
     {{ form.as_p }}  <!-- Это автоматически отрендерит форму, включая все поля и их валидацию -->
     <button type="submit">Регистрация</button>

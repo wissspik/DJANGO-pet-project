@@ -1,21 +1,79 @@
-<!-- base.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Мой сайт{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Сброс отступов и базовые стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Верхняя зелёная полоса */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: green;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        /* Левая зелёная полоса */
+        .left-bar {
+            position: fixed;
+            top: 60px; /* ниже верхней полосы */
+            left: 0;
+            width: 60px;
+            height: calc(100% - 60px);
+            background-color: green;
+            z-index: 1000;
+        }
+
+        /* Основное содержимое */
+        .content {
+            margin-top: 60px;
+            margin-left: 60px;
+            padding: 20px;
+        }
+
+        /* Стили для иконки */
+        .icon {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <!-- Общая навигация -->
-    </header>
-    <main>
+    <!-- Верхняя зелёная полоса с иконкой -->
+    <div class="top-bar">
+        <!-- Ссылка с иконкой. Измените href на нужный адрес -->
+        <a href="#" title="Перейти по ссылке">
+            <!-- Здесь можно использовать изображение, замените путь на свой -->
+            <img src="{% static 'images/icon.png' %}" alt="Icon" class="icon">
+        </a>
+    </div>
+
+    <!-- Левая зелёная полоса -->
+    <div class="left-bar">
+        <!-- Дополнительное содержимое или навигация можно разместить здесь -->
+    </div>
+
+    <!-- Основное содержимое страницы -->
+    <div class="content">
         {% block content %}
+        <!-- Здесь будет размещаться содержимое дочерних шаблонов -->
         {% endblock %}
-    </main>
-    <footer>
-        <!-- Общий подвал -->
-    </footer>
+    </div>
 </body>
 </html>

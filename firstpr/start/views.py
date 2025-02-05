@@ -23,7 +23,7 @@ def entrance_view(request):
             return redirect('focus_p')
         else:
             messages.error(request, "Неверный логин или пароль.")
-    return render(request, 'entrance.html')
+    return render(request, 'login.html')
 
 def registration_view(request):
     if request.method == 'POST':
@@ -35,7 +35,7 @@ def registration_view(request):
     else:
         form = UserCreationForm()  # Пустая форма при GET-запросе
 
-    return render(request, 'registration.html', {'form': form})
+    return render(request, 'regis.html', {'form': form})
 
 def focus_view(request):
     return render(request, 'focus.html')

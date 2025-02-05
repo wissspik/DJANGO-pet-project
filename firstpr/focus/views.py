@@ -26,6 +26,11 @@ def articles_view(request):
         return redirect('focus_p')  # Перенаправляем после успешной отправки
     return render(request, 'articles.html')
 
-def urls_view(request, slug):
-    article = get_object_or_404(Url,url=slug)
-    return render(request, 'article_detail.html', {'article': article})
+def urls_view(request, url):
+    pattern = get_object_or_404(Text, url__url=url)
+    return render(request,'article_detail.html',{'article': pattern})
+
+def focus_list_view(request):
+    url_instances = Url.objects.filter(user=request.user)  # корректно
+    return render(request, 'url_art.html', {'article': url_instances})
+

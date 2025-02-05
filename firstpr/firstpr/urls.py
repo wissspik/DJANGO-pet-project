@@ -20,10 +20,11 @@ from start import views
 from focus import views as focus_views
 
 urlpatterns = [
-    path('focus/articles/<slug:slug>/',focus_views.urls_view,name = 'articles_url'),
+    path('focus/articles/list/',focus_views.focus_list_view,name = 'list_url'),
+    path('focus/articles/list/<str:url>/',focus_views.urls_view,name = 'articles_url'),
     path('admin/', admin.site.urls, name='admin'),  # Исправлено имя для admin
     path('', views.entrance_view, name='home'),
-    path('regis/', views.registration_view, name='registration_1'),
+    path('regis/', views.registration_view, name='registration'),
     path('focus/', views.focus_view, name='focus_p'),
     path('focus/articles/', focus_views.articles_view, name='articles')
 ]
