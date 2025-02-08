@@ -1,0 +1,19 @@
+!DOCTYPE html
+html lang=ru
+head
+    meta charset=UTF-8
+    titleВывод значенияtitle
+    script
+        function showValue() {
+             Получаем значение из поля ввода
+            var value = document.getElementById(inputValue).value;
+             Выводим значение с помощью alert
+            alert(value);
+        }
+    script
+head
+body
+    input type=text id=inputValue
+    button onclick=showValue()Показать значениеbutton
+body
+html

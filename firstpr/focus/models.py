@@ -18,12 +18,18 @@ class Text(models.Model):
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=100)
 
-class Likes(models.Model):
+class Like(models.Model):
     id = models.AutoField(primary_key=True)
-    reaction = models.IntegerField()
-    url_id = models.ForeignKey(Text,on_delete=models.CASCADE,related_name='urls')
-    user_id = models.CharField(max_length=50)
-    comments = models.CharField(max_length=3000,null= True)
+    reaction = models.IntegerField()  # Например, 1 для лайка, 0 для дизлайка (если нужно)
+    post = models.ForeignKey(Text, on_delete=models.CASCADE, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
+
+class Comment(models.Model):
+    id = models.AutoField(primary_key=True)
+    post = models.ForeignKey(Text, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    content = models.CharField(max_length=3000)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 
